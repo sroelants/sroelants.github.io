@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Rubik:400,500,700&display=swap"   rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link type="text/css" href="/assets/css/style.css" rel="stylesheet">
+    <link type="text/css" href="/assets/css/prism.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+
+
+    <title>Running a blog with eleventy and netlify</title>
+  </head>
+  <body>
+    <div class="content">
+      
+      <header>
+        <div class="name">
+          <div id="sam">Sam</div>
+          <div id="roelants">Roelants</div>
+        </div>
+        <div class="contact">
+          <dl>
+            <div>
+              <dt><img src="/assets/img/envelope_icon.svg" class="glyph"></img></dt>
+              <dd class="address">165 Avenue Michel-Croz, 74400 Chamonix, France
+              </dd>
+            </div>
+            <div>
+              <dt><img src="/assets/img/at_icon.svg" class="glyph"></img></dt>
+              <dd class="email">
+                <a href="mailto: roelants.sam@gmail.com" target="_blank">
+                  roelants.sam@gmail.com
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt><img src="/assets/img/phone_icon.svg" class="glyph"></img></dt>
+              <dd class="phone">
+                <a href="tel:+33 656 704 307" target="_blank">+33 656 704 307
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt><img src="/assets/img/github_icon.svg" class="glyph"></img></dt>
+              <dd class="github">
+                <a href="http://www.github.com/sroelants" target="_blank">
+                  github.com/sroelants
+                </a>
+              </dd>
+            </div>
+          </ul>
+        </div>
+      </header>
+      
+      
+      <nav>
+        <ul>
+          <li >
+            <span><a href="/">Blog</a></span>
+          </li>
+          <li >
+            <span><a href="/about">About</a></span>
+          </li>
+          <li >
+            <span><a href="/resume/">Resume</a></span>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="main">
+        <a href="/" class="back">← Back</a>
+<section id="post">
+  <article>
+    <h1>Running a blog with eleventy and netlify</h1>
+    
+      <span class="post-metadata">
+        Posted on 
+        <span class="posted-date">
+        <time datetime="2019-07-23T08:20:34.871Z">
+          July 23, 2019
+        </time>
+        </span>
+        <a href="/thoughts/tags/web" class="tag">#web</a><a href="/thoughts/tags/static-site generator" class="tag">#static-site generator</a><a href="/thoughts/tags/other tags" class="tag">#other tags</a>
+      </span>
+    <pre class="language-python"><code class="language-python"><span class="highlight-line">  <span class="token keyword">def</span> <span class="token function">fib</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span><br><span class="highlight-line">    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span></span><br><span class="highlight-line">      <span class="token keyword">return</span> <span class="token number">0</span></span><br><span class="highlight-line">    <span class="token keyword">elif</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span><br><span class="highlight-line">      <span class="token keyword">return</span> <span class="token number">1</span></span><br><span class="highlight-line">    <span class="token keyword">else</span><span class="token punctuation">:</span></span><br><span class="highlight-line">      <span class="token keyword">return</span> fib<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fib<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span></span></code></pre>
+<p>Inline mathematics seems to work pretty well: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E = mc^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mrel">=</span><span class="mord mathit">m</span><span class="mord"><span class="mord mathit">c</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>. I wonder how display
+mode maths looks.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mi>f</mi><mo>(</mo><mi>z</mi><mo>)</mo><mi>d</mi><mspace width="0.16667em"></mspace><mi>z</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>i</mi><mspace width="0.16667em"></mspace><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">s</mi></mrow><mo>(</mo><mi>γ</mi><msub><mo>)</mo><mrow></mrow></msub></mrow><annotation encoding="application/x-tex">\oint_\gamma f(z)d\,z = 2\pi i\, \mathrm{Res}(\gamma)_{}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.36em;"></span><span class="strut bottom" style="height:2.4083579999999998em;vertical-align:-1.048358em;"></span><span class="base displaystyle textstyle uncramped"><span class="mop"><span class="op-symbol large-op mop" style="margin-right:0.44445em;top:-0.0011249999999999316em;">∮</span><span class="vlist"><span style="top:0.9122499999999999em;margin-right:0.05em;margin-left:-0.44445em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05556em;">γ</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mord mathit">d</span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathit" style="margin-right:0.03588em;">π</span><span class="mord mathit">i</span><span class="mord mspace thinspace"></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">R</span><span class="mord mathrm">e</span><span class="mord mathrm">s</span></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05556em;">γ</span><span class="mclose"><span class="mclose">)</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></p>
+
+  </article>
+</section>
+
+      </div>
+    </div>
+  </body>
+</html>

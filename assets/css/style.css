@@ -1,0 +1,155 @@
+/* Colours */
+/* General page styling */
+html {
+  overflow-y: scroll; }
+
+body {
+  background: #F9F9F9;
+  color: #424242;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px; }
+
+p {
+  text-align: justify; }
+
+h1, h2 {
+  font-family: 'Rubik', sans-serif; }
+
+/* Navbar styling */
+nav {
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  padding-top: 10px; }
+  nav ul {
+    padding: 0;
+    display: flex;
+    list-style: none; }
+    nav ul li {
+      flex-grow: 1;
+      display: inline-block;
+      text-align: center; }
+    nav ul li.active span {
+      border-bottom: 3px solid #009ee0; }
+
+/* Content styling */
+.content {
+  width: 700px;
+  margin: 0 auto;
+  padding: 50px 0 50px 0;
+  overflow: hidden; }
+
+.main {
+  font-size: 18px;
+  padding-top: 30px; }
+  .main a {
+    text-decoration: underline solid #009ee0; }
+
+h1 {
+  color: #424242;
+  width: 100%;
+  border-bottom: solid #009ee0 1px;
+  font-size: 32px;
+  font-weight: 400;
+  margin-block-end: 0.4444em; }
+
+h2 {
+  margin-block-end: 0.2em; }
+
+a {
+  text-decoration: none;
+  color: #424242; }
+
+a:hover {
+  color: #009ee0; }
+
+/* Header styling */
+header {
+  display: flex;
+  font-family: 'Rubik', sans-serif; }
+
+.name {
+  font-size: 60px;
+  color: #009ee0;
+  text-align: right;
+  display: inline-block;
+  font-weight: 500; }
+
+#roelants {
+  margin-top: -0.3em; }
+
+.contact {
+  margin-left: 20px;
+  padding: 1em 0 0.5em 0; }
+
+dl {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0; }
+
+dt {
+  float: left;
+  clear: left;
+  color: #009ee0;
+  text-align: right; }
+
+dd {
+  margin-inline-start: 1.5em; }
+
+.glyph {
+  width: 1em; }
+
+section {
+  margin: 0 0 50px 0; }
+
+.item {
+  display: flex;
+  margin-top: 20px; }
+
+.date {
+  min-width: 150px;
+  font-weight: bold; }
+
+.title {
+  font-weight: bold; }
+
+.description {
+  padding-top: 10px;
+  font-style: italic; }
+
+/* Skills styling */
+#skills > ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px; }
+
+#skills > ul > li {
+  padding: 0px 0px 20px 0px; }
+
+.posted-date {
+  margin-right: 1em;
+  display: inline; }
+  .posted-date time {
+    margin: 0;
+    padding: 0; }
+
+.tag {
+  color: #999;
+  text-decoration: none;
+  margin-left: 0.2em; }
+
+.post-metadata {
+  color: #999;
+  font-size: 16px; }
+  .post-metadata a {
+    text-decoration: none; }
+
+#sam-photo {
+  width: 250px;
+  height: 250px;
+  float: right;
+  border-radius: 100%;
+  shape-outside: circle(50%);
+  margin: 20px; }
