@@ -37,8 +37,8 @@ header {
   @media (max-width: 400px) {
     header {
       min-height: 10vh;
-      padding-top: 3vh;
-      padding-bottom: 4vh; } }
+      padding-top: 8vh;
+      padding-bottom: 2vh; } }
 
 .this {
   font-weight: 400;
@@ -216,6 +216,12 @@ h1 {
 dt {
   margin-top: 5px;
   margin-bottom: 5px; }
+
+pre[class*="language-"] {
+  padding: 1em 3em; }
+  @media (max-width: 768px) {
+    pre[class*="language-"] {
+      padding: 1em 2em; } }
 
 
 /*# sourceMappingURL=/style.a11e3109.css.map */
