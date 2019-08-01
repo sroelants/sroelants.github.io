@@ -26,17 +26,17 @@ header {
   font-size: 4em;
   font-weight: 700;
   color: #fffff2;
-  height: 30vh;
+  min-height: 30vh;
   padding-top: 10vh;
   padding-bottom: 10vh; }
   @media (max-width: 768px) {
     header {
-      height: 20vh;
+      min-height: 20vh;
       padding-top: 5vh;
       padding-bottom: 5vh; } }
   @media (max-width: 400px) {
     header {
-      height: 10vh;
+      min-height: 10vh;
       padding-top: 3vh;
       padding-bottom: 4vh; } }
 
@@ -50,7 +50,7 @@ header {
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
 
 main {
-  height: 65vh;
+  min-height: 65vh;
   margin: auto;
   width: 38vw; }
   @media (max-width: 1024px) {
@@ -58,15 +58,15 @@ main {
       width: 80vw; } }
   @media (max-width: 768px) {
     main {
-      height: 75vh;
+      min-height: 75vh;
       width: 90vw; } }
   @media (max-width: 400px) {
     main {
       padding-top: 10%;
-      height: 85vh; } }
+      min-height: 85vh; } }
 
 footer {
-  height: 5vh;
+  min-height: 5vh;
   bottom: 0;
   padding-top: 1em;
   text-align: center;
@@ -129,7 +129,6 @@ button {
     border: none; }
   @media (max-width: 768px) {
     button {
-      width: 100%;
       font-size: 1em; } }
 
 .mask {

@@ -139,6 +139,11 @@ var questions = [{
   options: ["window", "undefined", "myFun", "obj"],
   correct: "window",
   explanation: "<code>this</code> refers to the <em>execution</em> context of\n    a function. Even though <code>myFun</code> is a reference to the\n    <code>myMethod</code> method on <code>obj</code>, it is <em>executed</em> as a\n    top-level function. Hence, the execution context is set to <code>\n    window</code> (How would this change if we set <code>'use strict;'</code>?)\n    </p>"
+}, {
+  codesnippet: "\n    var luke = {\n      name: \"Luke\",\n      greet: function() {\n        console.log(\"My name is\" + this.name);\n      }\n    };\n    var mike = Object.create(luke);\n    mike.name = \"Mike\";\n    mike.greet(); //What is this?\n    ",
+  options: ["window", "undefined", "mike", "luke"],
+  correct: "mike",
+  explanation: "<p>\n    Even though <code>mike</code> doesn't have a <code>greet()</code> method\n    set, it inherits it from the <code>luke</code> prototype. Since <code>this\n    </code> refers to the execution context, not the lexical context (where it\n    is defined), it refers to <code>mike</code>, not <code>luke</code>.\n    </p>"
 }];
 exports.questions = questions;
 },{}],"assets/js/prism.js":[function(require,module,exports) {
@@ -1048,7 +1053,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38867" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37267" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
