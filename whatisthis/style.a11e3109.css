@@ -68,6 +68,7 @@ main {
 footer {
   height: 5vh;
   bottom: 0;
+  padding-top: 1em;
   text-align: center;
   width: 100vw;
   font-size: 0.8em; }
@@ -215,7 +216,7 @@ h1 {
 
 dt {
   margin-top: 5px;
-  rgin-bottom: 5px; }
+  margin-bottom: 5px; }
 
 
 /*# sourceMappingURL=/style.a11e3109.css.map */
