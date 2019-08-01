@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box; }
+
 html {
   overflow: hidden; }
 
@@ -19,13 +22,14 @@ header {
   font-size: 4em;
   font-weight: 700;
   color: #fffff2;
-  height: 10vh;
-  margin-top: 70px;
-  margin-bottom: 50px; }
+  min-height: 20vh;
+  padding-top: 10vh;
+  padding-bottom: 10vh; }
   @media (max-width: 400px) {
     header {
-      margin-top: 10%;
-      height: 5vh; } }
+      min-height: 10vh;
+      padding-top: 5vh;
+      padding-bottom: 5vh; } }
 
 .this {
   font-weight: 400;
@@ -37,7 +41,7 @@ header {
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
 
 main {
-  height: 75vh;
+  height: 80vh;
   margin: auto;
   width: 45vw; }
   @media (max-width: 1024px) {
@@ -46,10 +50,13 @@ main {
   @media (max-width: 768px) {
     main {
       width: 90vw; } }
+  @media (max-width: 400px) {
+    main {
+      padding-top: 10%;
+      height: 90vh; } }
 
 footer {
   height: 5vh;
-  bottom: 0;
   text-align: center;
   width: 100vw;
   font-size: 0.8em; }
