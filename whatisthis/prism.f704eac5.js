@@ -923,7 +923,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45155" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43743" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1099,4 +1099,3 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["node_modules/parcel/src/builtins/hmr-runtime.js","assets/js/prism.js"], null)
-//# sourceMappingURL=/prism.f704eac5.js.map
