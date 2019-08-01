@@ -174,7 +174,7 @@ h1 {
     color: #ee6352; }
   .card p {
     text-align: justify; }
-  .card .close {
+  .card a.close {
     position: absolute;
     font-size: 3em;
     color: #2C363F;
@@ -183,10 +183,10 @@ h1 {
     font-weight: 700;
     top: 0.5em;
     right: 0.5em; }
-    .card .close:hover {
+    .card a.close:hover {
       cursor: pointer;
       opacity: 0.6; }
-    .card .close:active {
+    .card a.close:active {
       opacity: 0.8;
       transform: translatey(2px); }
   @media (max-width: 1024px) {
