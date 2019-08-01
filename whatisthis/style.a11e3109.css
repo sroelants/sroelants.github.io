@@ -2,7 +2,8 @@ html {
   overflow: hidden; }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   background: linear-gradient(45deg, #12968e 10%, #17c4b9 20%);
   color: #fff; }
   @media (max-width: 400px) {
@@ -23,6 +24,7 @@ header {
   margin-bottom: 50px; }
   @media (max-width: 400px) {
     header {
+      margin-top: 10%;
       height: 5vh; } }
 
 .this {
@@ -116,7 +118,7 @@ button {
 
 .mask {
   background-color: rgba(0, 0, 0, 0.7);
-  position: fixed;
+  position: absolute;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -145,14 +147,22 @@ h1 {
   background-color: #fffff2;
   min-height: 20vh;
   width: 55vw;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
   color: #2C363F;
   -webkit-box-shadow: 14px 17px 44px -18px rgba(0, 0, 0, 0.9);
   -moz-box-shadow: 14px 17px 44px -18px rgba(0, 0, 0, 0.9);
   box-shadow: 14px 17px 44px -18px rgba(0, 0, 0, 0.9); }
+  @media (max-width: 768px) {
+    .card {
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 5%; } }
+  @media (min-width: 768px) {
+    .card {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); } }
   .card a {
     text-decoration: none;
     color: #ee6352; }
@@ -175,15 +185,8 @@ h1 {
       transform: translatey(2px); }
   @media (max-width: 1024px) {
     .card {
-      width: 80vw; } }
-  @media (max-width: 768px) {
-    .card {
+      width: 80vw;
       width: 70vw; } }
-  @media (max-width: 768px) {
-    .card {
-      top: 2.5%;
-      left: 2.5%;
-      transform: none; } }
   .card .card__options {
     margin-top: 2em;
     margin-bottom: 2em;
@@ -200,4 +203,4 @@ dt {
   margin-bottom: 5px; }
 
 
-/*# sourceMappingURL=style.a11e3109.css.map */
+/*# sourceMappingURL=/style.a11e3109.css.map */
