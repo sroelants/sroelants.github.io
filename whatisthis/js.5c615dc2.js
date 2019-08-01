@@ -125,12 +125,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.questions = void 0;
 var questions = [{
-  codesnippet: "\n'use strict';\n\nfunction fun(a, b) {\nreturn a + b;\n}\nconsole.log(this);\n    ",
+  codesnippet: "\n'use strict';\n\nfunction fun(a, b) {\n  return a + b;\n}\nconsole.log(this);\n    ",
   options: ["window", "undefined", "fun", "console"],
   correct: "window",
   explanation: "<p>In a global context (ie. when not referenced within the body of a function\n  declaration), <code>this</code> always refers to the global object, in this case <code>window</code>.\n  This remains true whether javascript is running in strict mode or not.</p>\n "
 }, {
-  codesnippet: "\nvar obj = {\ndata: 5\n};\n\nfunction myFun() {\nreturn this\n}\n\nobj.fun = myFun;\nconsole.log(obj.fun());\n    ",
+  codesnippet: "\nvar obj = {\n  data: 5\n};\n\nfunction myFun() {\n  return this\n}\n\nobj.fun = myFun;\nconsole.log(obj.fun());\n    ",
   options: ["window", "undefined", "myFun", "obj"],
   correct: "obj",
   explanation: "<p><code>this</code> refers to the <em>execution</em> context.\n    It completely disregards the lexical context of where the keyword is used\n    within the program code. In this instance, the function body is run as a \n    method on the object <code>obj</code>, so the execution context sets <code>\n    this</code> to <code>obj</code></p>"
@@ -140,7 +140,7 @@ var questions = [{
   correct: "window",
   explanation: "<code>this</code> refers to the <em>execution</em> context of\n    a function. Even though <code>myFun</code> is a reference to the\n    <code>myMethod</code> method on <code>obj</code>, it is <em>executed</em> as a\n    top-level function. Hence, the execution context is set to <code>\n    window</code> (How would this change if we set <code>'use strict;'</code>?)\n    </p>"
 }, {
-  codesnippet: "\nvar luke = {\n  name: \"Luke\",\n  greet: function() {\n    console.log(\"My name is\" + this.name);\n  }\n};\nvar mike = Object.create(luke);\nmike.name = \"Mike\";\nmike.greet(); //What is this?\n    ",
+  codesnippet: "\nvar luke = {\n  name: \"Luke\",\n  greet: function() {\n    console.log(\"My name is\" + this.name);\n  }\n};\nvar mike = Object.create(luke);\nmike.name = \"Mike\";\nmike.greet();\n    ",
   options: ["window", "undefined", "mike", "luke"],
   correct: "mike",
   explanation: "<p>\n    Even though <code>mike</code> doesn't have a <code>greet()</code> method\n    set, it inherits it from the <code>luke</code> prototype. Since <code>this\n    </code> refers to the execution context, not the lexical context (where it\n    is defined), it refers to <code>mike</code>, not <code>luke</code>.\n    </p>"
@@ -1049,7 +1049,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42401" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34071" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -8,7 +8,9 @@ html {
 body {
   min-height: 100vh;
   height: 100%;
-  background: linear-gradient(45deg, #12968e 10%, #17c4b9 20%);
+  background: linear-gradient(45deg, #042422, #0f8078, #17c4b9, #ee6352);
+  background-size: 800% 100%;
+  background-position: 50% 0%;
   color: #fff; }
   @media (max-width: 400px) {
     body {
@@ -22,7 +24,7 @@ header, footer, main {
 
 header {
   font-family: "Oswald", sans-serif;
-  text-shadow: 2px 4px 1px #12968e;
+  text-shadow: 2px 4px 1px #0f8078;
   font-size: 4em;
   font-weight: 700;
   color: #fffff2;
@@ -68,10 +70,10 @@ main {
 footer {
   min-height: 5vh;
   bottom: 0;
-  padding-top: 1em;
+  padding-top: 0.8em;
   text-align: center;
   width: 100vw;
-  font-size: 0.8em; }
+  font-size: 0.85em; }
   footer a {
     display: inline-block;
     text-decoration: none;
@@ -162,7 +164,7 @@ h1 {
   background-color: #fffff2;
   min-height: 20vh;
   width: 35vw;
-  position: absolute;
+  position: fixed;
   color: #2C363F;
   -webkit-box-shadow: 14px 17px 44px -18px rgba(0, 0, 0, 0.9);
   -moz-box-shadow: 14px 17px 44px -18px rgba(0, 0, 0, 0.9);
