@@ -54,7 +54,13 @@ h1 {
   margin-block-end: 0.4444em; }
 
 h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
   margin-block-end: 0.2em; }
+
+h3 {
+  margin-top: 3em;
+  margin-bottom: 1em; }
 
 a {
   text-decoration: none;

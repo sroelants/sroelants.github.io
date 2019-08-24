@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Rubik:400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link type="text/css" href="/assets/css/style.css" rel="stylesheet">
+    <link type="text/css" href="/assets/css/prism.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+
+
+    <title>Configuring a blog with Eleventy</title>
+  </head>
+  <body>
+    <div class="content">
+      
+      <header>
+        <div class="name">
+          <div id="sam">Sam</div>
+          <div id="roelants">Roelants</div>
+        </div>
+        <div class="contact">
+          <dl>
+            <div>
+              <dt><img src="/assets/img/envelope_icon.svg" class="glyph"></dt>
+              <dd class="address">165 Avenue Michel-Croz, 74400 Chamonix, France
+              </dd>
+            </div>
+            <div>
+              <dt><img src="/assets/img/at_icon.svg" class="glyph"></dt>
+              <dd class="email">
+                <a href="mailto: roelants.sam@gmail.com" target="_blank">
+                  roe­lants.sam@gmail.com
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt><img src="/assets/img/phone_icon.svg" class="glyph"></dt>
+              <dd class="phone">
+                <a href="tel:+33 656 704 307" target="_blank">+33 656 704 <span class="small-caps">307
+</span>                </a>
+              </dd>
+            </div>
+            <div>
+              <dt><img src="/assets/img/github_icon.svg" class="glyph"></dt>
+              <dd class="github">
+                <a href="http://www.github.com/sroelants" target="_blank">
+                  github.com/​sroe­lants
+                </a>
+              </dd>
+            </div>
+          
+        </dl></div>
+      </header>
+      
+      
+      <nav>
+        <ul>
+          <li class="active">
+            <span><a href="/">Blog</a></span>
+          </li>
+          <li>
+            <span><a href="/about">About</a></span>
+          </li>
+          <li>
+            <span><a href="/resume/">Resume</a></span>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="main">
+        <p>The ﬁrst thing one no­tices when look­ing at the Eleventy doc­u­men­ta­tion is that
+<em>there is­n’t re­ally much there</em>. It’s about as bare bones as it gets: no
+com­pli­cated data mod­els, no strict di­rec­tory hi­er­ar­chies. Eleventy takes all
+ﬁles from one folder, com­piles them, and gen­er­ates a folder of out­put ﬁles.
+Learn­ing how to use it was, in a word, a breeze.</p>
+<h2>Installing Eleventy and ba­sic us­age</h2>
+<p>Let’s get started by in­stalling eleventy with npm (or your Node pack­age man­ager
+of choice)</p>
+<pre class="language-text"><code class="language-text"><span class="highlight-line">npm install --save-dev @11ty/eleventy</span></code></pre>
+<p>Eleventy will by de­fault take any ﬁles it rec­og­nizes in the cur­rent folder, and
+out­put processed <span class="small-caps">HTML</span> ﬁles in a new sub­folder <code>_site</code>. We can change this
+be­hav­iour on the com­mand line by pass­ing along some ﬂags. The fol­low­ing com­mand
+would use <code>npx</code> to run eleventy on all Markdown (<code>.md</code>) and Nunjucks (<code>.njk</code>)
+ﬁles in the di­rec­tory <code>src/</code>, and write the out­put to <code>dist/</code></p>
+<pre class="language-text"><code class="language-text"><span class="highlight-line">npx @11ty/eleventy --input=src --output=dist --formats=md,njk</span></code></pre>
+<p>Instead of pass­ing these ﬂags on every run, we can set them in Eleventy’s
+global con­ﬁg ﬁle <code>.eleventy.js</code>, in the pro­jec­t’s root di­rec­tory. This is
+where we con­ﬁg­ure all of Eleventy’s be­hav­ior.</p>
+<pre class="language-js"><code class="language-js"><span class="highlight-line">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">eleventyConfig</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">  <span class="token keyword">return</span> <span class="token punctuation">{</span> dir<span class="token punctuation">:</span> <span class="token punctuation">{</span> input<span class="token punctuation">:</span> <span class="token string">"src"</span><span class="token punctuation">,</span> output<span class="token punctuation">:</span> <span class="token string">"dist"</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span></code></pre>
+<h3>Templates and lay­outs</h3>
+<p>A lot of peo­ple seem to like Eleventy for its sup­port for all the big tem­plat­ing
+en­gines. This means that mi­grat­ing a blog from Jekyll (that uses Liquid
+templates) to Eleventy is a breeze: you can sim­ply keep your old blog posts
+writ­ten us­ing Liquid and start writ­ing newer posts in any other tem­plat­ing
+syn­tax you’d pre­fer. By de­fault, Eleventy ﬁg­ures out which tem­plat­ing en­gine
+to use by look­ing at the ﬁle ex­ten­sion (ie. mark­down for <code>.md</code> ﬁles, Nunjucks
+for <code>.njk</code> ﬁles, etc…), though the user can ﬁne tune this in the con­ﬁg.</p>
+<p>Templates al­low you to dy­nam­i­cally cre­ate con­tent pages de­pen­dent on some
+ex­tra en­vi­ron­ment vari­ables. These vari­ables are usu­ally stored in the
+YAML-for­mat­ted front mat­ter of the tem­plate:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token punctuation">---</span></span><br><span class="highlight-line"><span class="token key atrule">section</span><span class="token punctuation">:</span> blog</span><br><span class="highlight-line"><span class="token key atrule">layout</span><span class="token punctuation">:</span> mainlayout.njk</span><br><span class="highlight-line"><span class="token key atrule">title</span><span class="token punctuation">:</span> Configuring a blog with Eleventy</span><br><span class="highlight-line"><span class="token key atrule">author</span><span class="token punctuation">:</span> Sam Roelants</span><br><span class="highlight-line"><span class="token key atrule">tags</span><span class="token punctuation">:</span></span><br><span class="highlight-line">  <span class="token punctuation">-</span> draft</span><br><span class="highlight-line">  <span class="token punctuation">-</span> web</span><br><span class="highlight-line">  <span class="token punctuation">-</span> static site generator</span><br><span class="highlight-line">  <span class="token punctuation">-</span> eleventy</span><br><span class="highlight-line">  <span class="token punctuation">-</span> configuration</span><br><span class="highlight-line"><span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">""</span></span><br><span class="highlight-line"><span class="token punctuation">---</span></span><br><span class="highlight-line"><span class="token punctuation">...</span></span></code></pre>
+<p>Of course, it would be hor­ri­bly re­dun­dant to have to in­clude all the lay­out
+markup (ie, the html) in every sin­gle tem­plate ﬁle cor­re­spond­ing to a sin­gle
+post. This is where <em>lay­outs</em> re­ally shine. Notice the <code>layout: mainlayout.njk</code>
+in the front mat­ter we just saw. Eleventy al­lows you to cre­ate a generic page
+with all the lay­out, and pop­u­late that with posts stored in tem­plate ﬁles.
+By de­fault, all these lay­out ﬁles are stored in an <code>_includes/</code> folder along
+with the rest of your site’s sources.</p>
+<h3>File or­ga­ni­za­tion</h3>
+<p>Unlike many other sta­tic site gen­er­a­tors, Eleventy places no con­straints on your
+di­rec­tory tree. You get to or­ga­nize your pro­ject how­ever you see ﬁt, with­out
+eleventy get­ting in the way. For this blog, I have some­thing re­sem­bling the
+fol­low­ing:</p>
+<pre class="language-text"><code class="language-text"><span class="highlight-line">./</span><br><span class="highlight-line">  src/</span><br><span class="highlight-line">    _includes/</span><br><span class="highlight-line">    assets/</span><br><span class="highlight-line">      sass/</span><br><span class="highlight-line">      images/</span><br><span class="highlight-line">      posts/</span><br><span class="highlight-line">      drafts/</span><br><span class="highlight-line">  dist/</span></code></pre>
+<p>You can de­ﬁne folder-wide front mat­ter vari­ables that ap­ply to all tem­plate
+ﬁles found in that folder. These are stored in a json ﬁle car­ry­ing the same
+name as the folder, eg. <code>posts.json</code> in the folder <code>posts</code>. All blog posts
+use the same lay­out-ﬁle, have the same url for­mat and in­clude the <code>post</code> tag
+so they can be col­lected later on. Instead of adding all these tags to the front
+mat­ter of every tem­plate, I have the fol­low­ing ﬁle set up:</p>
+<pre class="language-text"><code class="language-text"><span class="highlight-line">(src/posts/posts.json:)</span><br><span class="highlight-line"></span><br><span class="highlight-line">{</span><br><span class="highlight-line">  "permalink": "/blog/&lbrace;{ title | slug &rbrace;}/index.html",</span><br><span class="highlight-line">  "layout": "post.njk"</span><br><span class="highlight-line">  "tags": </span><br><span class="highlight-line">    - post</span><br><span class="highlight-line">}</span></code></pre>
+<h3>Filters and short­codes</h3>
+<p>This is where us­ing a tem­plat­ing lan­guage, rather than plain <span class="small-caps">HTML</span>, re­ally starts
+to shine. Filters are func­tions that can process the en­vi­ron­ment
+vari­ables. Some are built in (eg. to es­cape a string or turn it into a
+<a href="https://en.wikipedia.org/wiki/Clean_URL#Slug">slug</a>), but users can eas­ily
+drop their own ﬁl­ters into the <code>.eleventy.js</code> con­ﬁg ﬁle. If I wanted to use
+an es­caped ver­sion of the ti­tle some­where in the page, I sim­ply use <code>{{title
+| safe }}</code>. In the last sec­tion, I gen­er­ated a slug to form the
+perma­link to my blog posts us­ing <code>{{url | slug }}</code>.
+If I want to use the <code>date</code>, that is stored as a <span class="small-caps">JS
+</span><code>Date</code> ob­ject&thinsp;&mdash;&thinsp;and hence is ut­terly use­less to us&thinsp;&mdash;&thinsp;we could write a ﬁl­ter
+<code>readable</code> so that we could dis­play the date as <code>{{ date | readable
+}}</code>. We can drop this func­tion in <code>eleventy.js</code> as fol­lows:</p>
+<pre class="language-js"><code class="language-js"><span class="highlight-line">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">eleventyConfig</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line"><span class="token keyword">const</span> moment <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'moment'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">  eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"readable"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">date</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">    <span class="token keyword">return</span> <span class="token function">moment</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"LL"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span></code></pre>
+<p>Shortcodes are the sec­ond con­struc­tion where the power of tem­plat­ing re­ally
+be­comes ap­par­ent. They are ba­si­cally reusable snip­pets of code that can be
+pre­de­ﬁned. I use the same for­mat for some post meta­data (the post­ing date and
+tags) in sev­eral places through­out this blog. Shortcodes al­low me to de­ﬁne the
+fol­low­ing snip­pet in <code>eleventy.js</code>:</p>
+<pre class="language-js"><code class="language-js"><span class="highlight-line">eleventyConfig<span class="token punctuation">.</span><span class="token function">addShortcode</span><span class="token punctuation">(</span><span class="token string">"metadata"</span><span class="token punctuation">,</span> </span><br><span class="highlight-line">  <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">date<span class="token punctuation">,</span> tags</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">    <span class="token keyword">let</span> tagMarkup <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token keyword">for</span> <span class="token punctuation">(</span>tag <span class="token keyword">of</span> tags<span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">      <span class="token keyword">if</span> <span class="token punctuation">(</span>tag <span class="token operator">!=</span> <span class="token string">"post"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">        tagMarkup <span class="token operator">+=</span></span><br><span class="highlight-line">          <span class="token string">'&lt;a href="/thoughts/tags/'</span> <span class="token operator">+</span> </span><br><span class="highlight-line">          tag <span class="token operator">+</span> <span class="token string">'" class="tag">#'</span> <span class="token operator">+</span> tag <span class="token operator">+</span> <span class="token string">"&lt;/a>"</span><span class="token punctuation">;</span></span><br><span class="highlight-line">      <span class="token punctuation">}</span></span><br><span class="highlight-line">    <span class="token punctuation">}</span></span><br><span class="highlight-line"></span><br>    <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`<br><span class="highlight-line">      &lt;span class="post-metadata"></span><br><span class="highlight-line">        Posted on </span><br><span class="highlight-line">        &lt;span class="posted-date"></span><br><span class="highlight-line">        &lt;time datetime="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">moment</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toISOString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"></span><br><span class="highlight-line">          </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">moment</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"LL"</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"></span><br><span class="highlight-line">        &lt;/time></span><br><span class="highlight-line">        &lt;/span></span><br><span class="highlight-line">        </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tagMarkup<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"></span><br>      &lt;/span>`</span></span><span class="token punctuation">;</span><br><span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>While I’m not en­tirely sold on the idea of hard­cod­ing part of my markup in some
+con­ﬁg ﬁle, it does make for easy us­age: Anywhere I want to print this
+pre­for­mat­ted meta­data, I sim­ply drop in a  <code>{% metadata date,
+tags %}</code>.</p>
+<h2>Tweaking the de­tails</h2>
+<p>The Eleventy core is pretty lean. Because it runs on node.js, all the bells and
+whis­tles it lacks are avail­able to us through count­less npm pack­ages. This be­ing
+a fairly mod­est and sim­ply blog, I feel like I’ve only scratched the sur­face of
+what’s pos­si­ble.</p>
+<h3>Syntax high­light­ing</h3>
+<p>The de-facto stan­dard for syn­tax high­light­ing code blocks is Prism.js. Because
+we are pre-ren­der­ing every­thing, we don’t have to rely on Prism pars­ing our
+code blocks on the ﬂy on the client side. Instead, we can sim­ply pass it over
+all our ﬁles dur­ing the build step! Little op­ti­miza­tions like this add up and
+re­duce bun­dle size and ren­der time. Right now, I am us­ing the
+<code>eleventy-plugin-syntaxhighlight</code> pack­age, but I feel like sim­ply us­ing the
+Prism.js node pack­age di­rectly would give me more ﬂex­i­bil­ity.
+Adding the plu­gin is as easy as adding:</p>
+<pre class="language-js"><code class="language-js"><span class="highlight-line"><span class="token keyword">const</span> syntaxHighlight <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"@11ty/eleventy-plugin-syntaxhighlight"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">eleventyConfig<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>syntaxHighlight<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h3>Math ren­der­ing with KaTeX</h3>
+<p>For years, the stan­dard for ren­der­ing math on­line was the Mathjax li­brary.
+De­spite it be­ing a mam­moth of a li­brary, it is used on rep­utable math sites like
+Math Overﬂow and math.stack­ex­change. The ren­der­ing is fairly slow and
+there’s many is­sues with con­tent jump­ing all over the place as the ren­der­ing
+changes the el­e­ment di­men­sions. Also, this be­ing a pre-gen­er­ated site, I wanted
+some­thing that could eas­ily be run dur­ing the build process. The lit­tle
+doc­u­men­ta­tion I found about run­ning MathJax on the server­side made it seem
+fairly hacky and quite the ef­fort, so I opted against it.</p>
+<p>A new player on the ﬁeld is KaTeX, de­vel­oped by the guys at Kahn University.
+It is far more lean and has an ex­cel­lent server-side ren­der­ing <span class="small-caps">API</span>. What’s more,
+be­cause we have the en­tire <span class="small-caps">NPM</span> ecosys­tem at our ser­vice, adding KaTeX sup­port
+was as sim­ply as in­stalling the KaTeX plu­gin for Markdown-it (the de­fault
+mark­down parser Eleventy uses).</p>
+<pre class="language-js"><code class="language-js"><span class="highlight-line">  <span class="token keyword">let</span> markdownIt <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"markdown-it"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token keyword">let</span> markdownItKatex <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"markdown-it-katex"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token keyword">let</span> options <span class="token operator">=</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">    html<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span><br><span class="highlight-line">    breaks<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></span><br><span class="highlight-line">    linkify<span class="token punctuation">:</span> <span class="token boolean">true</span></span><br><span class="highlight-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">  <span class="token keyword">let</span> markdownLib <span class="token operator">=</span> <span class="token function">markdownIt</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>markdownItKatex<span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  eleventyConfig<span class="token punctuation">.</span><span class="token function">setLibrary</span><span class="token punctuation">(</span><span class="token string">"md"</span><span class="token punctuation">,</span> markdownLib<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>And presto! We have math ren­der­ing on our blog! Inline math like <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>e</mi><mi>i</mi></msup><mi>π</mi><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">e^i\pi = -1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.824664em;"></span><span class="strut bottom" style="height:0.907994em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">e</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.03588em;">π</span><span class="mrel">=</span><span class="mord">−</span><span class="mord mathrm">1</span></span></span></span>
+or <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>↠</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">f: A \twoheadrightarrow B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mrel">:</span><span class="mord mathit">A</span><span class="mrel amsrm">↠</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span> seems to be work­ing ﬁne with­out mess­ing up the
+line height too much. Block level math is also pretty straight­for­ward. Nothing
+holding me back from cal­cu­lat­ing some com­plex in­te­grals the Cauchy way:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mi>f</mi><mo>(</mo><mi>z</mi><mo>)</mo><mspace width="0.16667em"></mspace><mi>d</mi><mi>z</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>i</mi><msub><mo>∑</mo><mi>i</mi></msub><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">s</mi></mrow><mo>(</mo><mi>f</mi><mo separator="true">,</mo><msub><mi>a</mi><mi>i</mi></msub><mo>)</mo><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\oint_\gamma f(z)\,dz = 2\pi i\sum_i\mathrm{Res}(f, a_i).
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.36em;"></span><span class="strut bottom" style="height:2.637669em;vertical-align:-1.277669em;"></span><span class="base displaystyle textstyle uncramped"><span class="mop"><span class="op-symbol large-op mop" style="margin-right:0.44445em;top:-0.0011249999999999316em;">∮</span><span class="vlist"><span style="top:0.9122499999999999em;margin-right:0.05em;margin-left:-0.44445em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05556em;">γ</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mord mspace thinspace"></span><span class="mord mathit">d</span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathit" style="margin-right:0.03588em;">π</span><span class="mord mathit">i</span><span class="mop op-limits"><span class="vlist"><span style="top:1.1776689999999999em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span style="top:-0.000005000000000143778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span><span class="op-symbol large-op mop">∑</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">R</span><span class="mord mathrm">e</span><span class="mord mathrm">s</span></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mpunct">,</span><span class="mord"><span class="mord mathit">a</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span><span class="mord mathrm">.</span></span></span></span></span></p>
+<h3>Static as­sets</h3>
+<p>I tend to keep a di­rec­tory in my ﬁle hi­er­ar­chy for sta­tic as­sets (ie. css,
+javascript ﬁles and im­ages) that don’t need to be processed by eleventy.
+Eleventy comes with a built-in func­tion that copies fold­ers to the pro­duc­tion
+di­rec­tory whole­sale. Unfortunately, globs are not yet al­lowed, so each di­rec­tory
+that is to be copied must be listed ex­plicitely.</p>
+<pre class="language-js"><code class="language-js"><span class="highlight-line">eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token string">"src/assets/css"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token string">"src/assets/js"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token string">"src/assets/images"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2>Concluding thoughts</h2>
+<p>There’s much more to be said still on what’s pos­si­ble us­ing Eleventy’s
+lightweight but ﬂex­i­ble ar­chi­tec­ture, but I’ll keep it at this. Setting
+everything up was a breeze, de­spite the some­times lack­ing doc­u­men­ta­tion.
+Eleventy as an <span class="small-caps">SSG</span> has gar­nered so much at­ten­tion in the last year that there
+is no lack of blog posts on how to set up the ﬁner de­tails. Of course, this is
+only the start, and I can’t wait to see how much more can be cus­tomized.</p>
+
+      </div>
+    </div>
+  </body>
+</html>
